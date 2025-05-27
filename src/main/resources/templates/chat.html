@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Voyager AI</title>
+
+    <!-- External Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .message {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .user {
+            background-color: #e0f7fa;
+            text-align: right;
+        }
+
+        .ai {
+            background-color: #f1f8e9;
+            text-align: left;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Smart Voyager AI</h2>
+
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs" id="mainTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat" type="button"
+                    role="tab">Chat
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="form-tab" data-bs-toggle="tab" data-bs-target="#form" type="button" role="tab">
+                Plan Form
+            </button>
+        </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content mt-3" id="tabContent">
+        <!-- Chat Tab -->
+        <div class="tab-pane fade show active" id="chat" role="tabpanel">
+            <div id="chatBox" style="height: 700px; overflow-y: auto; border: 1px solid #ccc; padding: 10px;"></div>
+            <form id="chatForm" class="d-flex gap-2 mt-2">
+                <input type="text" id="userMessage" class="form-control" placeholder="Type your message..." required/>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+
+        <!-- Form Tab -->
+        <div class="tab-pane fade" id="form" role="tabpanel">
+            <form id="planForm" class="row g-3">
+                <div class="col-md-6"><label class="form-label">Name</label><input type="text" class="form-control"
+                                                                                   id="name" required></div>
+                <div class="col-md-6"><label class="form-label">Current Location</label><input type="text"
+                                                                                               class="form-control"
+                                                                                               id="location" required>
+                </div>
+                <div class="col-md-6"><label class="form-label">Destination</label><input type="text"
+                                                                                          class="form-control"
+                                                                                          id="destination" required>
+                </div>
+                <div class="col-md-6"><label class="form-label">Start Date</label><input type="date"
+                                                                                         class="form-control"
+                                                                                         id="startDate" required></div>
+                <div class="col-md-6"><label class="form-label">End Date</label><input type="date" class="form-control"
+                                                                                       id="endDate" required></div>
+                <div class="col-md-6">
+                    <label class="form-label">Budget</label>
+                    <select class="form-select" id="budget" required>
+                        <option value="low">Low</option>
+                        <option value="mid-range">Mid-range</option>
+                        <option value="luxury">Luxury</option>
+                    </select>
+                </div>
+                <div class="col-md-6"><label class="form-label">Interests</label><input type="text" class="form-control"
+                                                                                        id="interests"
+                                                                                        placeholder="e.g., history, food, adventure"
+                                                                                        required></div>
+                <div class="col-md-6">
+                    <label class="form-label">Pace</label>
+                    <select class="form-select" id="pace" required>
+                        <option value="relaxed">Relaxed</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="packed">Packed</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-success">Submit Plan</button>
+                </div>
+            </form>
+
+            <!-- Output Section -->
+            <div id="planOutput" class="mt-4 border rounded p-3" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Handle chat messages
+    $('#chatForm').on('submit', function (e) {
+        e.preventDefault();
+        const message = $('#userMessage').val().trim();
+        if (!message) return;
+
+        $('#chatBox').append(`<div class="message user">${$('<div>').text(message).html()}</div>`);
+        $('#userMessage').val('');
+        $('#chatBox').append(`<div class="message ai"><div class="loader"></div></div>`);
+
+        fetch(`/process?userInput=${encodeURIComponent(message)}`, {
+            method: 'POST'
+        })
+            .then(res => res.text())
+            .then(response => {
+                $('.message.ai').last().html(marked.parse(response));
+                $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+            })
+            .catch(err => {
+                $('.message.ai').last().html(`<span style="color:red;">Error: ${err.message}</span>`);
+            });
+    });
+
+    // Handle form submission
+    $('#planForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const data = {
+            name: $('#name').val(),
+            current_location: $('#location').val(),
+            destination: $('#destination').val(),
+            start_date: $('#startDate').val(),
+            end_date: $('#endDate').val(),
+            budget: $('#budget').val(),
+            interests: $('#interests').val(),
+            pace: $('#pace').val()
+        };
+
+        const input = JSON.stringify(data, null, 2);
+        const encodedInput = encodeURIComponent(input);
+
+        const $output = $('#planOutput');
+        $output.html('<div class="loader"></div>').show();
+
+        fetch('/process?userInput=' + encodedInput,{
+          method: 'POST'})
+            .then(response => response.text())
+            .then(markdown => {
+                $output.html(marked.parse(markdown));
+            })
+            .catch(error => {
+                $output.html('<p style="color:red;">Error: ' + error.message + '</p>');
+            });
+    });
+    // Email Form POST
+    $('#emailForm').on('submit', function (e) {
+        e.preventDefault();
+        const email = $('#emailAddress').val().trim();
+        const content = $('#emailContent').val().trim();
+        const $status = $('#emailStatus');
+
+        if (!email || !content) {
+            $status.html('<p style="color:red;">Both fields are required.</p>');
+            return;
+        }
+
+        $status.html('<div class="loader"></div>');
+
+        fetch(`/sendEmail?emailAddress=${encodeURIComponent(email)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: content
+        })
+            .then(res => res.text())
+            .then(response => {
+                $status.html(`<p style="color:green;">${response}</p>`);
+            })
+            .catch(err => {
+                $status.html(`<p style="color:red;">Error: ${err.message}</p>`);
+            });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
