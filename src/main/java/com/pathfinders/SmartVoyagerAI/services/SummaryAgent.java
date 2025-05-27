@@ -27,10 +27,6 @@ public class SummaryAgent {
 
     @Autowired
     @Lazy
-    private HotelAgent hotelAgent;
-
-    @Autowired
-    @Lazy
     private UserInputAgent userInputAgent;
 
     public SummaryAgent(ChatModel chatModel) {
@@ -42,8 +38,8 @@ public class SummaryAgent {
                 You are a professional travel planner. Based on the user preferences in JSON format, generate a detailed, engaging travel itinerary.
                 
                 Instructions:
-                - Show weather info, flight info and hotel info. Use tools for these information.
-                    While using tools extract associated parameters for tool calling from userInput.
+                - Show weather info and flight info. Use tools for these information.
+                  While using tools extract associated parameters for tool calling from userInput.
                 - Create a personalized daily itinerary for the trip.
                 - Include recommendations for places to visit, things to do, and local food to try.
                 - Consider the user's interests and budget.
@@ -56,7 +52,7 @@ public class SummaryAgent {
                     new UserMessage(userInputAgent.extractInformationFromUserInput(userInput))
             );
             String response = chatClient.prompt(prompt)
-                    .tools(weatherAgent, flightAgent, hotelAgent)
+                    .tools(weatherAgent, flightAgent)
                     .call()
                     .content();
         System.out.println("summary response: \n"+response);
