@@ -1,6 +1,5 @@
 package com.pathfinders.SmartVoyagerAI.services;
 
-import com.pathfinders.SmartVoyagerAI.clients.HotelClient;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
