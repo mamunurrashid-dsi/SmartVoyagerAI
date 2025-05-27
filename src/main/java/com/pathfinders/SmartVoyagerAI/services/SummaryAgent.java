@@ -3,22 +3,17 @@ package com.pathfinders.SmartVoyagerAI.services;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatModel;
-//import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 
 @Service
 public class SummaryAgent {
 //    @Autowired
 //    private JavaMailSender mailSender;
-
-//    @Autowired
-//    private ToolCallingChatMo toolCallingChatModel;
 
     private final ChatClient chatClient;
 
@@ -30,39 +25,39 @@ public class SummaryAgent {
     @Lazy
     private FlightAgent flightAgent;
 
-    public SummaryAgent(OllamaChatModel chatModel) {
+    @Autowired
+    @Lazy
+    private UserInputAgent userInputAgent;
+
+    public SummaryAgent(ChatModel chatModel) {
         this.chatClient = ChatClient.builder(chatModel).build();
     }
 
+    public String prepareAndSendSummary(String userInput) throws MessagingException {
+        String systemMessage = """
+                You are a professional travel planner. Based on the user preferences in JSON format, generate a detailed, engaging travel itinerary.
+                
+                Instructions:
+                - Show weather info and flight info. Use tools for these information.
+                - Create a personalized daily itinerary for the trip.
+                - Include recommendations for places to visit, things to do, and local food to try.
+                - Consider the user's interests and budget.
+                - Include travel tips where appropriate.
+                - Format the output clearly, by day (e.g., Day 1, Day 2...).
+                """;
 
-    public String prepareAndSendSummary(String destination, String date, String email) throws MessagingException {
-
-//        List<ToolSpecification> toolSpecs = ToolSpecifications.fromBeans(weatherAgent, flightAgent);
-
-        Prompt prompt = new Prompt(
-                new SystemMessage("You are a helpful travel agent."),
-                new UserMessage("Get the weather and cheapest flight for %s on %s.".formatted(destination, date))
-        );
-
-//        sendEmail(email, summary);
-        return chatClient.prompt(prompt)
-                .tools(weatherAgent,flightAgent) // Auto-detects @Tool-annotated methods
-                .call()
-                .content();
-    }
-
-    public Flux<String> prepareAndSendSummaryOnFlux(String destination, String date, String email) throws MessagingException {
-        Prompt prompt = new Prompt(
-                new SystemMessage("You are a helpful travel agent."),
-                new UserMessage("Get the weather and cheapest flight for %s on %s.".formatted(destination, date))
-        );
-
-        return chatClient.prompt(prompt)
-                .tools(weatherAgent, flightAgent)
-                .stream()
-                .content();
-
+            Prompt prompt = new Prompt(
+                    new SystemMessage(systemMessage),
+                    new UserMessage(userInputAgent.extractInformationFromUserInput(userInput))
+            );
+            String response = chatClient.prompt(prompt)
+                    .tools(weatherAgent, flightAgent)
+                    .call()
+                    .content();
+        System.out.println("summary response: \n"+response);
+        return response;
 //            sendEmail(email, summary);
+
     }
 
 //    public void sendEmail(String to, String body) throws MessagingException {

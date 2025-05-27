@@ -1,31 +1,27 @@
 package com.pathfinders.SmartVoyagerAI.controllers;
 
 import com.pathfinders.SmartVoyagerAI.services.SummaryAgent;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.MessagingException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/flux")
 public class TourPlanController {
 
-    private final SummaryAgent summaryAgent;
-
-    public TourPlanController(SummaryAgent summaryAgent) {
-        this.summaryAgent = summaryAgent;
-    }
+    @Autowired
+    private SummaryAgent summaryAgent;
 
     @GetMapping("/")
-    public Mono<String> home() {
-        return Mono.just("form");
+    public String home() {
+        return "form";
     }
 
-    @PostMapping(value = "/process", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> process(@RequestParam String destination,
-                                @RequestParam String date,
-                                @RequestParam String email) {
-
-        return summaryAgent.prepareAndSendSummaryOnFlux(destination, date, email);
+    @PostMapping("/process")
+    public String process(@RequestParam String userInput) throws MessagingException {
+        String summary = summaryAgent.prepareAndSendSummary(userInput);
+        return summary;
     }
 }

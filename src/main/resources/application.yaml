@@ -2,18 +2,18 @@ spring:
   application:
     name: SmartVoyagerAI
   ai:
-    ollama:
-      chat:
-        options:
-          model: llama3.2
-        model: ollama
-      base-url: http://localhost:11434
-#    openai:
-#      api-key: ${OPENAPI_KEY}
-#      base-url: https://openrouter.ai/api
+#    ollama:
 #      chat:
 #        options:
-#          model: anthropic/claude-3-haiku-20240307
+#          model: llama3.2
+#        model: ollama
+#      base-url: http://localhost:11434
+    openai:
+      api-key: ${OPENAPI_KEY}
+      base-url: https://openrouter.ai/api
+      chat:
+        options:
+          model: openai/gpt-4o
 
 # Spring AI Configuration for OpenRouter
 # IMPORTANT: Replace 'YOUR_OPENROUTER_API_KEY_HERE' with your actual OpenRouter API key.
