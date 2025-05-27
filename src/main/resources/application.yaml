@@ -1,4 +1,8 @@
 spring:
+  main:
+    web-application-type: reactive
+  thymeleaf:
+    cache: false
   application:
     name: SmartVoyagerAI
   ai:
@@ -23,3 +27,6 @@ spring:
   # Default chat model to use via OpenRouter
   # Get model IDs from the OpenRouter website (e.g., "anthropic/claude-3-sonnet", "google/gemini-pro")
 
+weather:
+  api:
+    key: 2985b1c0c6a44eadae543044252705

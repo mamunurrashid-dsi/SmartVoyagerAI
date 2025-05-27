@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chat</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<h2>Smart Chat</h2>
+
+<div id="chatBox"></div>
+
+<form id="chatForm">
+  <input type="text" id="userMessage" placeholder="Type a message..." autocomplete="off" required />
+  <button class="btn btn-primary plan-tour-btn" type="submit">Send</button>
+</form>
+
+<script>
+  function streamAIResponse(message) {
+    const aiMsgContainer = $('<div class="message ai"></div>').appendTo('#chatBox');
+    $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+
+    const eventSource = new EventSource(`/process?userInput=${encodeURIComponent(message)}`);
+
+    eventSource.onmessage = function (event) {
+      aiMsgContainer.append(document.createTextNode(event.data + ' '));
+      $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+    };
+
+    eventSource.onerror = function () {
+      eventSource.close();
+    };
+  }
+
+  $('#chatForm').on('submit', function (e) {
+    e.preventDefault();
+
+    const message = $('#userMessage').val().trim();
+    if (!message) return;
+
+    $('#chatBox').append(`<div class="message user">${$('<div>').text(message).html()}</div>`);
+    $('#userMessage').val('');
+    streamAIResponse(message);
+  });
+</script>
+</body>
+</html>

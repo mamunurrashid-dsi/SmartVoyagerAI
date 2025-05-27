@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartVoyager AI - Travel Agency</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Header Section -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <img th:src="@{/images/logo.png}" alt="SmartVoyager AI Logo">
+                SmartVoyager AI
+            </div>
+            <div class="header-action">
+                <a href="/plan" class="btn btn-primary plan-tour-btn">Plan Your Tour</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Body Section -->
+<main class="main-content">
+    <section class="hero-section">
+        <div class="container">
+            <h1>Discover Amazing Destinations</h1>
+            <p>Explore the world's most beautiful places with our expert guides</p>
+        </div>
+    </section>
+
+    <section class="destinations">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+
+            <div class="destination-grid">
+                <!-- Destination 1 -->
+                <div class="destination-card">
+                    <img th:src="@{/images/destination1.png}" alt="Paris, France">
+                    <div class="destination-info">
+                        <h3>Paris, France</h3>
+                        <p>The City of Lights, famous for its art, fashion, gastronomy and culture. Visit the Eiffel Tower, Louvre Museum, and Notre-Dame Cathedral.</p>
+                    </div>
+                </div>
+
+                <!-- Destination 2 -->
+                <div class="destination-card">
+                    <img th:src="@{/images/destination2.png}" alt="Kyoto, Japan">
+                    <div class="destination-info">
+                        <h3>Kyoto, Japan</h3>
+                        <p>Former imperial capital known for its classical Buddhist temples, gardens, imperial palaces, and traditional wooden houses.</p>
+                    </div>
+                </div>
+
+                <!-- Destination 3 -->
+                <div class="destination-card">
+                    <img th:src="@{/images/destination3.png}" alt="Santorini, Greece">
+                    <div class="destination-info">
+                        <h3>Santorini, Greece</h3>
+                        <p>Famous for its dramatic views, stunning sunsets, white-washed houses, and beautiful blue-domed churches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="about-us">
+                <h3>About Us</h3>
+                <p>SmartVoyager AI is a premier travel agency dedicated to providing unforgettable travel experiences. Our team of experts helps you discover the world's most amazing destinations with customized itineraries and exceptional service.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 SmartVoyager AI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
