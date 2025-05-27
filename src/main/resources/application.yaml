@@ -15,6 +15,16 @@ spring:
         options:
           model: openai/gpt-4o
 
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: general.azhar.u.azad@gmail.com
+    password: ${EMAIL_APP_PASS}
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+
+
 amadeus:
   grant-type: ${GRANT_TYPE}
   client-id: ${CLIENT_ID}
