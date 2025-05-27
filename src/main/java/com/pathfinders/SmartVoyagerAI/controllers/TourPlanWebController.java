@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class TourPlanWebController {
 
-    @Autowired
-    private SummaryAgent summaryAgent;
-
-    @GetMapping("/")
-    public String home() {
-        return "form";
-    }
-
-    @PostMapping("/process")
-    public String process(@RequestParam String destination,
-                          @RequestParam String date,
-                          @RequestParam String email,
-                          Model model) throws MessagingException {
-        String summary = summaryAgent.prepareAndSendSummary(destination, date, email);
-        model.addAttribute("summary", summary);
-        return "summary";
-    }
+//    @Autowired
+//    private SummaryAgent summaryAgent;
+//
+//    @GetMapping("/")
+//    public String home() {
+//        return "form";
+//    }
+//
+//    @PostMapping("/process")
+//    public String process(@RequestParam String destination,
+//                          @RequestParam String date,
+//                          @RequestParam String email,
+//                          Model model) throws MessagingException {
+//        String summary = summaryAgent.prepareAndSendSummary(destination, date, email);
+//        model.addAttribute("summary", summary);
+//        return "summary";
+//    }
 }
