@@ -29,6 +29,10 @@ public class SummaryAgent {
     @Lazy
     private UserInputAgent userInputAgent;
 
+    @Autowired
+    @Lazy
+    private HotelAgent hotelAgent;
+
     public SummaryAgent(ChatModel chatModel) {
         this.chatClient = ChatClient.builder(chatModel).build();
     }
@@ -38,8 +42,14 @@ public class SummaryAgent {
                 You are a professional travel planner. Based on the user preferences in JSON format, generate a detailed, engaging travel itinerary.
                 
                 Instructions:
-                - Show weather info and flight info. Use tools for these information.
-                  While using tools extract associated parameters for tool calling from userInput.
+                - Show weather info, flight info and hotel info. Use tools for these information.
+                    - While using tools extract associated parameters for tool calling from userInput.
+                    - While getting hotels, you need to get the cityCode from the destination from userInput and then call the tool.
+                    - While getting flights, you need to get the originCityCode/IATA code from currentLocation and destinationCityCode/IATA code from destination
+                    as well as startDate from userInput.
+                - All types of currency values should
+                 be converted according to currentLocation from userInput.
+                - Get an appropriate airport for the currentLocation on userInput.
                 - Create a personalized daily itinerary for the trip.
                 - Include recommendations for places to visit, things to do, and local food to try.
                 - Consider the user's interests and budget.
@@ -47,12 +57,13 @@ public class SummaryAgent {
                 - Format the output clearly, by day (e.g., Day 1, Day 2...).
                 """;
 
+
             Prompt prompt = new Prompt(
                     new SystemMessage(systemMessage),
                     new UserMessage(userInputAgent.extractInformationFromUserInput(userInput))
             );
             String response = chatClient.prompt(prompt)
-                    .tools(weatherAgent, flightAgent)
+                    .tools(weatherAgent, flightAgent, hotelAgent)
                     .call()
                     .content();
         System.out.println("summary response: \n"+response);

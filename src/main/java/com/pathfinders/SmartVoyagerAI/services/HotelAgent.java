@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class FlightAgent {
+public class HotelAgent {
 
     @Value("${amadeus.grant-type}")
     private String GRANT_TYPE;
@@ -26,12 +26,13 @@ public class FlightAgent {
 
     private final ChatClient chatClient;
 
-    public FlightAgent(ChatModel chatModel) {
+    public HotelAgent(ChatModel chatModel) {
         this.chatClient = ChatClient.builder(chatModel).build();
     }
 
-    @Tool(name = "get-flight", description = "Gets cheapest flight to a city on a date")
-    public String getFlightInfo(String originCityCode, String destinationCityCode, String startDate) {
+    @Tool(name = "get-hotel", description = "Get hotel by cityCode.")
+    public String getHotelsInCity(String cityCode) {
+
         String token = ApiAuthToken.getAccessToken(GRANT_TYPE, CLIENT_ID, CLIENT_SECRET);
 
         RestTemplate restTemplate = new RestTemplate();
@@ -41,7 +42,7 @@ public class FlightAgent {
         HttpEntity<Void> request = new HttpEntity<>(headers);
 
         ResponseEntity<String> apiResponse = restTemplate.exchange(
-                "https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode="+originCityCode+"&destinationLocationCode="+destinationCityCode+"&departureDate="+startDate+"&adults=1",
+                "https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-city?cityCode=" + cityCode,
                 HttpMethod.GET,
                 request,
                 String.class);
@@ -50,7 +51,7 @@ public class FlightAgent {
 
         assert responseBody != null;
         Prompt prompt = new Prompt(
-                new SystemMessage("From the UserMessage, suggest me three suitable flights"),
+                new SystemMessage("From the UserMessage, suggest me five suitable hotels"),
                 new UserMessage(responseBody)
         );
 

@@ -1,0 +1,609 @@
+{
+"hotels": [
+  {
+    "city": "Paris",
+    "hotel_name": "Hotel Paris Grand",
+    "average_cost": 422,
+    "address": "365 Central Ave, Paris"
+  },
+  {
+    "city": "Paris",
+    "hotel_name": "Grand Hotel",
+    "average_cost": 422,
+    "address": "123 Luve, Paris"
+  },
+  {
+    "city": "London",
+    "hotel_name": "Hotel London Grand",
+    "average_cost": 421,
+    "address": "94 Central Ave, London"
+  },
+  {
+    "city": "Rome",
+    "hotel_name": "Hotel Rome Grand",
+    "average_cost": 310,
+    "address": "194 Central Ave, Rome"
+  },
+  {
+    "city": "Bangkok",
+    "hotel_name": "Hotel Bangkok Grand",
+    "average_cost": 550,
+    "address": "875 Central Ave, Bangkok"
+  },
+  {
+    "city": "Dubai",
+    "hotel_name": "Hotel Dubai Grand",
+    "average_cost": 624,
+    "address": "76 Central Ave, Dubai"
+  },
+  {
+    "city": "New York",
+    "hotel_name": "Hotel New York Grand",
+    "average_cost": 222,
+    "address": "665 Central Ave, New York"
+  },
+  {
+    "city": "Tokyo",
+    "hotel_name": "Hotel Tokyo Grand",
+    "average_cost": 650,
+    "address": "120 Central Ave, Tokyo"
+  },
+  {
+    "city": "Istanbul",
+    "hotel_name": "Hotel Istanbul Grand",
+    "average_cost": 334,
+    "address": "75 Central Ave, Istanbul"
+  },
+  {
+    "city": "Barcelona",
+    "hotel_name": "Hotel Barcelona Grand",
+    "average_cost": 313,
+    "address": "613 Central Ave, Barcelona"
+  },
+  {
+    "city": "Singapore",
+    "hotel_name": "Hotel Singapore Grand",
+    "average_cost": 169,
+    "address": "131 Central Ave, Singapore"
+  },
+  {
+    "city": "Kuala Lumpur",
+    "hotel_name": "Hotel Kuala Lumpur Grand",
+    "average_cost": 507,
+    "address": "951 Central Ave, Kuala Lumpur"
+  },
+  {
+    "city": "Seoul",
+    "hotel_name": "Hotel Seoul Grand",
+    "average_cost": 159,
+    "address": "837 Central Ave, Seoul"
+  },
+  {
+    "city": "Hong Kong",
+    "hotel_name": "Hotel Hong Kong Grand",
+    "average_cost": 300,
+    "address": "853 Central Ave, Hong Kong"
+  },
+  {
+    "city": "Amsterdam",
+    "hotel_name": "Hotel Amsterdam Grand",
+    "average_cost": 655,
+    "address": "514 Central Ave, Amsterdam"
+  },
+  {
+    "city": "Milan",
+    "hotel_name": "Hotel Milan Grand",
+    "average_cost": 271,
+    "address": "17 Central Ave, Milan"
+  },
+  {
+    "city": "Vienna",
+    "hotel_name": "Hotel Vienna Grand",
+    "average_cost": 446,
+    "address": "610 Central Ave, Vienna"
+  },
+  {
+    "city": "Prague",
+    "hotel_name": "Hotel Prague Grand",
+    "average_cost": 572,
+    "address": "566 Central Ave, Prague"
+  },
+  {
+    "city": "Los Angeles",
+    "hotel_name": "Hotel Los Angeles Grand",
+    "average_cost": 544,
+    "address": "977 Central Ave, Los Angeles"
+  },
+  {
+    "city": "Las Vegas",
+    "hotel_name": "Hotel Las Vegas Grand",
+    "average_cost": 476,
+    "address": "767 Central Ave, Las Vegas"
+  },
+  {
+    "city": "Miami",
+    "hotel_name": "Hotel Miami Grand",
+    "average_cost": 541,
+    "address": "12 Central Ave, Miami"
+  },
+  {
+    "city": "San Francisco",
+    "hotel_name": "Hotel San Francisco Grand",
+    "average_cost": 191,
+    "address": "543 Central Ave, San Francisco"
+  },
+  {
+    "city": "Orlando",
+    "hotel_name": "Hotel Orlando Grand",
+    "average_cost": 582,
+    "address": "777 Central Ave, Orlando"
+  },
+  {
+    "city": "Madrid",
+    "hotel_name": "Hotel Madrid Grand",
+    "average_cost": 414,
+    "address": "555 Central Ave, Madrid"
+  },
+  {
+    "city": "Florence",
+    "hotel_name": "Hotel Florence Grand",
+    "average_cost": 500,
+    "address": "869 Central Ave, Florence"
+  },
+  {
+    "city": "Venice",
+    "hotel_name": "Hotel Venice Grand",
+    "average_cost": 230,
+    "address": "815 Central Ave, Venice"
+  },
+  {
+    "city": "Berlin",
+    "hotel_name": "Hotel Berlin Grand",
+    "average_cost": 667,
+    "address": "922 Central Ave, Berlin"
+  },
+  {
+    "city": "Munich",
+    "hotel_name": "Hotel Munich Grand",
+    "average_cost": 203,
+    "address": "816 Central Ave, Munich"
+  },
+  {
+    "city": "Toronto",
+    "hotel_name": "Hotel Toronto Grand",
+    "average_cost": 536,
+    "address": "936 Central Ave, Toronto"
+  },
+  {
+    "city": "Vancouver",
+    "hotel_name": "Hotel Vancouver Grand",
+    "average_cost": 424,
+    "address": "477 Central Ave, Vancouver"
+  },
+  {
+    "city": "Montreal",
+    "hotel_name": "Hotel Montreal Grand",
+    "average_cost": 206,
+    "address": "793 Central Ave, Montreal"
+  },
+  {
+    "city": "Buenos Aires",
+    "hotel_name": "Hotel Buenos Aires Grand",
+    "average_cost": 631,
+    "address": "410 Central Ave, Buenos Aires"
+  },
+  {
+    "city": "Rio de Janeiro",
+    "hotel_name": "Hotel Rio de Janeiro Grand",
+    "average_cost": 210,
+    "address": "627 Central Ave, Rio de Janeiro"
+  },
+  {
+    "city": "Cape Town",
+    "hotel_name": "Hotel Cape Town Grand",
+    "average_cost": 477,
+    "address": "766 Central Ave, Cape Town"
+  },
+  {
+    "city": "Johannesburg",
+    "hotel_name": "Hotel Johannesburg Grand",
+    "average_cost": 477,
+    "address": "400 Central Ave, Johannesburg"
+  },
+  {
+    "city": "Cairo",
+    "hotel_name": "Hotel Cairo Grand",
+    "average_cost": 156,
+    "address": "585 Central Ave, Cairo"
+  },
+  {
+    "city": "Marrakech",
+    "hotel_name": "Hotel Marrakech Grand",
+    "average_cost": 419,
+    "address": "602 Central Ave, Marrakech"
+  },
+  {
+    "city": "Athens",
+    "hotel_name": "Hotel Athens Grand",
+    "average_cost": 414,
+    "address": "676 Central Ave, Athens"
+  },
+  {
+    "city": "Lisbon",
+    "hotel_name": "Hotel Lisbon Grand",
+    "average_cost": 131,
+    "address": "111 Central Ave, Lisbon"
+  },
+  {
+    "city": "Nice",
+    "hotel_name": "Hotel Nice Grand",
+    "average_cost": 144,
+    "address": "984 Central Ave, Nice"
+  },
+  {
+    "city": "Lyon",
+    "hotel_name": "Hotel Lyon Grand",
+    "average_cost": 165,
+    "address": "115 Central Ave, Lyon"
+  },
+  {
+    "city": "Zurich",
+    "hotel_name": "Hotel Zurich Grand",
+    "average_cost": 651,
+    "address": "683 Central Ave, Zurich"
+  },
+  {
+    "city": "Geneva",
+    "hotel_name": "Hotel Geneva Grand",
+    "average_cost": 306,
+    "address": "325 Central Ave, Geneva"
+  },
+  {
+    "city": "Edinburgh",
+    "hotel_name": "Hotel Edinburgh Grand",
+    "average_cost": 638,
+    "address": "345 Central Ave, Edinburgh"
+  },
+  {
+    "city": "Dublin",
+    "hotel_name": "Hotel Dublin Grand",
+    "average_cost": 577,
+    "address": "71 Central Ave, Dublin"
+  },
+  {
+    "city": "Brussels",
+    "hotel_name": "Hotel Brussels Grand",
+    "average_cost": 396,
+    "address": "414 Central Ave, Brussels"
+  },
+  {
+    "city": "Stockholm",
+    "hotel_name": "Hotel Stockholm Grand",
+    "average_cost": 513,
+    "address": "67 Central Ave, Stockholm"
+  },
+  {
+    "city": "Oslo",
+    "hotel_name": "Hotel Oslo Grand",
+    "average_cost": 291,
+    "address": "568 Central Ave, Oslo"
+  },
+  {
+    "city": "Copenhagen",
+    "hotel_name": "Hotel Copenhagen Grand",
+    "average_cost": 421,
+    "address": "591 Central Ave, Copenhagen"
+  },
+  {
+    "city": "Helsinki",
+    "hotel_name": "Hotel Helsinki Grand",
+    "average_cost": 667,
+    "address": "241 Central Ave, Helsinki"
+  },
+  {
+    "city": "Reykjavik",
+    "hotel_name": "Hotel Reykjavik Grand",
+    "average_cost": 367,
+    "address": "640 Central Ave, Reykjavik"
+  },
+  {
+    "city": "Mexico City",
+    "hotel_name": "Hotel Mexico City Grand",
+    "average_cost": 494,
+    "address": "691 Central Ave, Mexico City"
+  },
+  {
+    "city": "Cancun",
+    "hotel_name": "Hotel Cancun Grand",
+    "average_cost": 494,
+    "address": "461 Central Ave, Cancun"
+  },
+  {
+    "city": "Lima",
+    "hotel_name": "Hotel Lima Grand",
+    "average_cost": 296,
+    "address": "464 Central Ave, Lima"
+  },
+  {
+    "city": "Santiago",
+    "hotel_name": "Hotel Santiago Grand",
+    "average_cost": 149,
+    "address": "573 Central Ave, Santiago"
+  },
+  {
+    "city": "Bogota",
+    "hotel_name": "Hotel Bogota Grand",
+    "average_cost": 667,
+    "address": "168 Central Ave, Bogota"
+  },
+  {
+    "city": "Panama City",
+    "hotel_name": "Hotel Panama City Grand",
+    "average_cost": 172,
+    "address": "225 Central Ave, Panama City"
+  },
+  {
+    "city": "Havana",
+    "hotel_name": "Hotel Havana Grand",
+    "average_cost": 318,
+    "address": "215 Central Ave, Havana"
+  },
+  {
+    "city": "San Juan",
+    "hotel_name": "Hotel San Juan Grand",
+    "average_cost": 230,
+    "address": "911 Central Ave, San Juan"
+  },
+  {
+    "city": "Montego Bay",
+    "hotel_name": "Hotel Montego Bay Grand",
+    "average_cost": 197,
+    "address": "775 Central Ave, Montego Bay"
+  },
+  {
+    "city": "Punta Cana",
+    "hotel_name": "Hotel Punta Cana Grand",
+    "average_cost": 434,
+    "address": "950 Central Ave, Punta Cana"
+  },
+  {
+    "city": "Phuket",
+    "hotel_name": "Hotel Phuket Grand",
+    "average_cost": 457,
+    "address": "233 Central Ave, Phuket"
+  },
+  {
+    "city": "Chiang Mai",
+    "hotel_name": "Hotel Chiang Mai Grand",
+    "average_cost": 454,
+    "address": "211 Central Ave, Chiang Mai"
+  },
+  {
+    "city": "Hanoi",
+    "hotel_name": "Hotel Hanoi Grand",
+    "average_cost": 415,
+    "address": "941 Central Ave, Hanoi"
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "hotel_name": "Hotel Ho Chi Minh City Grand",
+    "average_cost": 140,
+    "address": "537 Central Ave, Ho Chi Minh City"
+  },
+  {
+    "city": "Manila",
+    "hotel_name": "Hotel Manila Grand",
+    "average_cost": 687,
+    "address": "227 Central Ave, Manila"
+  },
+  {
+    "city": "Jakarta",
+    "hotel_name": "Hotel Jakarta Grand",
+    "average_cost": 235,
+    "address": "661 Central Ave, Jakarta"
+  },
+  {
+    "city": "Bali",
+    "hotel_name": "Hotel Bali Grand",
+    "average_cost": 623,
+    "address": "231 Central Ave, Bali"
+  },
+  {
+    "city": "Sydney",
+    "hotel_name": "Hotel Sydney Grand",
+    "average_cost": 326,
+    "address": "546 Central Ave, Sydney"
+  },
+  {
+    "city": "Melbourne",
+    "hotel_name": "Hotel Melbourne Grand",
+    "average_cost": 657,
+    "address": "221 Central Ave, Melbourne"
+  },
+  {
+    "city": "Auckland",
+    "hotel_name": "Hotel Auckland Grand",
+    "average_cost": 177,
+    "address": "48 Central Ave, Auckland"
+  },
+  {
+    "city": "Queenstown",
+    "hotel_name": "Hotel Queenstown Grand",
+    "average_cost": 590,
+    "address": "290 Central Ave, Queenstown"
+  },
+  {
+    "city": "Fiji",
+    "hotel_name": "Hotel Fiji Grand",
+    "average_cost": 519,
+    "address": "727 Central Ave, Fiji"
+  },
+  {
+    "city": "Honolulu",
+    "hotel_name": "Hotel Honolulu Grand",
+    "average_cost": 443,
+    "address": "802 Central Ave, Honolulu"
+  },
+  {
+    "city": "Maui",
+    "hotel_name": "Hotel Maui Grand",
+    "average_cost": 137,
+    "address": "434 Central Ave, Maui"
+  },
+  {
+    "city": "Las Palmas",
+    "hotel_name": "Hotel Las Palmas Grand",
+    "average_cost": 128,
+    "address": "613 Central Ave, Las Palmas"
+  },
+  {
+    "city": "Palma de Mallorca",
+    "hotel_name": "Hotel Palma de Mallorca Grand",
+    "average_cost": 144,
+    "address": "910 Central Ave, Palma de Mallorca"
+  },
+  {
+    "city": "Dubrovnik",
+    "hotel_name": "Hotel Dubrovnik Grand",
+    "average_cost": 183,
+    "address": "839 Central Ave, Dubrovnik"
+  },
+  {
+    "city": "Split",
+    "hotel_name": "Hotel Split Grand",
+    "average_cost": 520,
+    "address": "613 Central Ave, Split"
+  },
+  {
+    "city": "Krakow",
+    "hotel_name": "Hotel Krakow Grand",
+    "average_cost": 533,
+    "address": "41 Central Ave, Krakow"
+  },
+  {
+    "city": "Warsaw",
+    "hotel_name": "Hotel Warsaw Grand",
+    "average_cost": 310,
+    "address": "943 Central Ave, Warsaw"
+  },
+  {
+    "city": "Budapest",
+    "hotel_name": "Hotel Budapest Grand",
+    "average_cost": 496,
+    "address": "713 Central Ave, Budapest"
+  },
+  {
+    "city": "Belgrade",
+    "hotel_name": "Hotel Belgrade Grand",
+    "average_cost": 506,
+    "address": "928 Central Ave, Belgrade"
+  },
+  {
+    "city": "Tbilisi",
+    "hotel_name": "Hotel Tbilisi Grand",
+    "average_cost": 195,
+    "address": "782 Central Ave, Tbilisi"
+  },
+  {
+    "city": "Doha",
+    "hotel_name": "Hotel Doha Grand",
+    "average_cost": 85,
+    "address": "414 Central Ave, Doha"
+  },
+  {
+    "city": "Abu Dhabi",
+    "hotel_name": "Hotel Abu Dhabi Grand",
+    "average_cost": 511,
+    "address": "553 Central Ave, Abu Dhabi"
+  },
+  {
+    "city": "Muscat",
+    "hotel_name": "Hotel Muscat Grand",
+    "average_cost": 560,
+    "address": "795 Central Ave, Muscat"
+  },
+  {
+    "city": "Tel Aviv",
+    "hotel_name": "Hotel Tel Aviv Grand",
+    "average_cost": 180,
+    "address": "148 Central Ave, Tel Aviv"
+  },
+  {
+    "city": "Jerusalem",
+    "hotel_name": "Hotel Jerusalem Grand",
+    "average_cost": 514,
+    "address": "821 Central Ave, Jerusalem"
+  },
+  {
+    "city": "Petra",
+    "hotel_name": "Hotel Petra Grand",
+    "average_cost": 99,
+    "address": "221 Central Ave, Petra"
+  },
+  {
+    "city": "Amman",
+    "hotel_name": "Hotel Amman Grand",
+    "average_cost": 211,
+    "address": "37 Central Ave, Amman"
+  },
+  {
+    "city": "Casablanca",
+    "hotel_name": "Hotel Casablanca Grand",
+    "average_cost": 397,
+    "address": "17 Central Ave, Casablanca"
+  },
+  {
+    "city": "Fez",
+    "hotel_name": "Hotel Fez Grand",
+    "average_cost": 202,
+    "address": "690 Central Ave, Fez"
+  },
+  {
+    "city": "Mombasa",
+    "hotel_name": "Hotel Mombasa Grand",
+    "average_cost": 644,
+    "address": "696 Central Ave, Mombasa"
+  },
+  {
+    "city": "Nairobi",
+    "hotel_name": "Hotel Nairobi Grand",
+    "average_cost": 646,
+    "address": "649 Central Ave, Nairobi"
+  },
+  {
+    "city": "Zanzibar",
+    "hotel_name": "Hotel Zanzibar Grand",
+    "average_cost": 149,
+    "address": "915 Central Ave, Zanzibar"
+  },
+  {
+    "city": "Dar es Salaam",
+    "hotel_name": "Hotel Dar es Salaam Grand",
+    "average_cost": 142,
+    "address": "760 Central Ave, Dar es Salaam"
+  },
+  {
+    "city": "Accra",
+    "hotel_name": "Hotel Accra Grand",
+    "average_cost": 233,
+    "address": "973 Central Ave, Accra"
+  },
+  {
+    "city": "Lagos",
+    "hotel_name": "Hotel Lagos Grand",
+    "average_cost": 326,
+    "address": "744 Central Ave, Lagos"
+  },
+  {
+    "city": "Addis Ababa",
+    "hotel_name": "Hotel Addis Ababa Grand",
+    "average_cost": 185,
+    "address": "664 Central Ave, Addis Ababa"
+  },
+  {
+    "city": "Windhoek",
+    "hotel_name": "Hotel Windhoek Grand",
+    "average_cost": 84,
+    "address": "565 Central Ave, Windhoek"
+  }
+]}
