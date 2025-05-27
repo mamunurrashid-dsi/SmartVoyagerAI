@@ -24,6 +24,8 @@ spring:
     properties.mail.smtp.auth: true
     properties.mail.smtp.starttls.enable: true
 
+weatherapi:
+  key: ${WEATHERAPI_KEY}
 
 amadeus:
   grant-type: ${GRANT_TYPE}

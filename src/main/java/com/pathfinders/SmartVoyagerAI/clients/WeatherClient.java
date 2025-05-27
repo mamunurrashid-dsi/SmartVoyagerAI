@@ -1,5 +1,6 @@
 package com.pathfinders.SmartVoyagerAI.clients;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -16,7 +17,9 @@ import java.time.temporal.ChronoUnit;
 @Component
 public class WeatherClient {
 
-    private static final String API_KEY = "2985b1c0c6a44eadae543044252705";
+    @Value("${weatherapi.key}")
+    private String API_KEY;
+
     private static final String BASE_URL = "http://api.weatherapi.com/v1";
     private static final String FUTURE_API_URI = BASE_URL + "/future.json";
     private static final String FORECAST_API_URI = BASE_URL + "/forecast.json";
