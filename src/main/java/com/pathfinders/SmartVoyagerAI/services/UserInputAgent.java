@@ -34,6 +34,9 @@ public class UserInputAgent {
                 
                 Return the result as a JSON object. If any field is missing or unclear, leave it as null.
                 If only month is provided in startDate and endDate append current year with that month (e.g July-2025).
+                
+                If userInput is a JSON like String then just return that as a JSON object 
+                (appended with ```json ```, e.g ```json {userInput} ```).
                 """.formatted(LocalDate.now());
         Prompt prompt = new Prompt(
                 new SystemMessage(systemPrompt),
