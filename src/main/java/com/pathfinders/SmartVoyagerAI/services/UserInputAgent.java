@@ -6,10 +6,6 @@ import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
-import java.util.stream.Collectors;
 
 @Service
 public class UserInputAgent {
@@ -19,7 +15,7 @@ public class UserInputAgent {
         this.chatClient = ChatClient.builder(chatModel).build();
     }
 
-    public Mono<String> extractInformationFromUserInput(String userInput) {
+    public String extractInformationFromUserInput(String userInput) {
         String systemPrompt = """
                 You are a travel assistant. Your job is to extract the following fields from the user's input:
                 - name
@@ -37,14 +33,12 @@ public class UserInputAgent {
                 new SystemMessage(systemPrompt),
                 new UserMessage(userInput)
         );
-        Flux<String> response = chatClient.prompt(prompt)
-                .stream()
+        String response = chatClient.prompt(prompt)
+                .call()
                 .content();
-
-        Mono<String> responseMono = response.collectList().map(list -> String.join("", list));
-        Mono<String> stringMono = responseMono.map(s -> s.substring(s.indexOf("```json") + 1, s.lastIndexOf("```")));
-//        stringMono.subscribe(System.out::println);
-        return stringMono;
+        assert response != null;
+        System.out.println("extracted json value \n"+response);
+        return response.substring(response.indexOf("```json"), response.lastIndexOf("```"));
     }
 
 }
