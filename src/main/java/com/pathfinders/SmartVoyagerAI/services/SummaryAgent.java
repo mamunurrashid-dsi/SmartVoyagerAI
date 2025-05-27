@@ -39,6 +39,7 @@ public class SummaryAgent {
                 
                 Instructions:
                 - Show weather info and flight info. Use tools for these information.
+                  While using tools extract associated parameters for tool calling from userInput.
                 - Create a personalized daily itinerary for the trip.
                 - Include recommendations for places to visit, things to do, and local food to try.
                 - Consider the user's interests and budget.
