@@ -4,14 +4,13 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.ai.ollama.OllamaChatModel;
+//import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
+import reactor.core.publisher.Flux;
 
 @Service
 public class SummaryAgent {
@@ -45,8 +44,6 @@ public class SummaryAgent {
                 new UserMessage("Get the weather and cheapest flight for %s on %s.".formatted(destination, date))
         );
 
-        // Auto-detects @Tool-annotated methods
-
 //        sendEmail(email, summary);
         return chatClient.prompt(prompt)
                 .tools(weatherAgent,flightAgent) // Auto-detects @Tool-annotated methods
@@ -54,23 +51,18 @@ public class SummaryAgent {
                 .content();
     }
 
-    public Mono<String> prepareAndSendSummaryOnFlux(String destination, String date, String email) throws MessagingException {
+    public Flux<String> prepareAndSendSummaryOnFlux(String destination, String date, String email) throws MessagingException {
+        Prompt prompt = new Prompt(
+                new SystemMessage("You are a helpful travel agent."),
+                new UserMessage("Get the weather and cheapest flight for %s on %s.".formatted(destination, date))
+        );
 
-        return Mono.fromCallable(() -> {
-            Prompt prompt = new Prompt(
-                    new SystemMessage("You are a helpful travel agent."),
-                    new UserMessage("Get the weather and cheapest flight for %s on %s.".formatted(destination, date))
-            );
-
-            // Blocking call to the chat client
-            String summary = chatClient.prompt(prompt)
-                    .tools(weatherAgent, flightAgent)
-                    .call()
-                    .content();
+        return chatClient.prompt(prompt)
+                .tools(weatherAgent, flightAgent)
+                .stream()
+                .content();
 
 //            sendEmail(email, summary);
-            return summary;
-        }).subscribeOn(Schedulers.boundedElastic()); // Runs blocking work on a background thread
     }
 
 //    public void sendEmail(String to, String body) throws MessagingException {
