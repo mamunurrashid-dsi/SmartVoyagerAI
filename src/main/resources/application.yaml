@@ -15,11 +15,8 @@ spring:
         options:
           model: openai/gpt-4o
 
-# Spring AI Configuration for OpenRouter
-# IMPORTANT: Replace 'YOUR_OPENROUTER_API_KEY_HERE' with your actual OpenRouter API key.
-  
-  # Point Spring AI to the OpenRouter base URL
-  
-  # Default chat model to use via OpenRouter
-  # Get model IDs from the OpenRouter website (e.g., "anthropic/claude-3-sonnet", "google/gemini-pro")
+amadeus:
+  grant-type: ${GRANT_TYPE}
+  client-id: ${CLIENT_ID}
+  client-secret: ${CLIENT_SECRET}
 

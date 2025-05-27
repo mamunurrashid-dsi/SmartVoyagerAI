@@ -35,8 +35,6 @@ public class WeatherClient {
             url = futureApiUrl;
         }
 
-//        String url = String.format("http://api.weatherapi.com/v1/future.json?key=%s&q=%s&dt=%s", apiKey, city, date);
-
 
         System.out.printf("=========== Weather URL: %s%n", url);
 
@@ -49,7 +47,6 @@ public class WeatherClient {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             String json = response.body();
-            // Use Jackson or org.json to parse and extract what you need
             return json;
         } catch (Exception e) {
             e.printStackTrace();

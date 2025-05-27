@@ -7,12 +7,22 @@ import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class HotelAgent {
+
+    @Value("${amadeus.grant-type}")
+    private String GRANT_TYPE;
+
+    @Value("${amadeus.client-id}")
+    private String CLIENT_ID;
+
+    @Value("${amadeus.client-secret}")
+    private String CLIENT_SECRET;
 
     private final ChatClient chatClient;
 
@@ -23,7 +33,7 @@ public class HotelAgent {
     @Tool(name = "get-hotel", description = "Get hotel by cityCode.")
     public String getHotelsInCity(String cityCode) {
 
-        String token = ApiAuthToken.getAccessToken("client_credentials", "QZ0EAxjWynBHrR7Zm2M5SopXXSibzX7N", "IDnE2wgDlSGKAKzA");
+        String token = ApiAuthToken.getAccessToken(GRANT_TYPE, CLIENT_ID, CLIENT_SECRET);
 
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -44,10 +54,9 @@ public class HotelAgent {
                 new SystemMessage("From the UserMessage, suggest me five suitable hotels"),
                 new UserMessage(responseBody)
         );
-        String response = chatClient.prompt(prompt)
+
+        return chatClient.prompt(prompt)
                 .call()
                 .content();
-
-        return response;
     }
 }
