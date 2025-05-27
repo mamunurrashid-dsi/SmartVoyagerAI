@@ -14,10 +14,8 @@ public class FlightAgent {
     }
 
     @Tool(name = "get-flight", description = "Gets cheapest flight to a city on a date")
-    public String getCheapestFlight(String destination) {
-        // Simulate an external API call (replace with actual API logic)
-//        return "$199 via AirExample to " + destination + " on " + date;
+    public String getCheapestFlight(String currentLocation, String destination) {
 
-        return flightClient.getFlightData(destination);
+        return flightClient.getFlightData(currentLocation, destination);
     }
 }
