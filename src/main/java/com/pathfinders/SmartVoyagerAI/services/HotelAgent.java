@@ -32,7 +32,10 @@ public class HotelAgent {
 
     @Tool(name = "get-hotel", description = "Get hotel by cityCode.")
     public String getHotelsInCity(String cityCode) {
-
+        System.out.println("=======calling hotel api========");
+        if (cityCode == null || cityCode.isEmpty()) {
+            return "I cannot get hotel information without your destination";
+        }
         String token = ApiAuthToken.getAccessToken(GRANT_TYPE, CLIENT_ID, CLIENT_SECRET);
 
         RestTemplate restTemplate = new RestTemplate();

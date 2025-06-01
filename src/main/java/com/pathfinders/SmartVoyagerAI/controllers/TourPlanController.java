@@ -26,6 +26,12 @@ public class TourPlanController {
         return summary;
     }
 
+//    @PostMapping("/input")
+//    public String extractInputData(@RequestParam String userInput) throws MessagingException {
+//        String summary = summaryAgent.extractInformationFromUserInput(userInput);
+//        return summary;
+//    }
+
     @PostMapping("/sendEmail")
     public String sendEmail(
             @RequestParam String emailAddress,

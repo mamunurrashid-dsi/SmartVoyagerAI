@@ -2,19 +2,23 @@ spring:
   application:
     name: SmartVoyagerAI
   ai:
-#    ollama:
-#      chat:
-#        options:
-#          model: llama3.2
-#        model: ollama
-#      base-url: http://localhost:11434
-    openai:
-      api-key: ${OPENAPI_KEY}
-      base-url: https://openrouter.ai/api
+    ollama:
       chat:
         options:
-          model: openai/gpt-4o
-
+          model: llama3.2
+        model: ollama
+      base-url: http://localhost:11434
+#    openai:
+#      api-key: ${OPENAPI_KEY}
+#      base-url: https://openrouter.ai/api
+#      chat:
+#        options:
+#          model: openai/gpt-4o
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring_ai
+    username: mamun
+    password: mamun
+    driver-class-name: org.postgresql.Driver
 
   mail:
     host: smtp.gmail.com

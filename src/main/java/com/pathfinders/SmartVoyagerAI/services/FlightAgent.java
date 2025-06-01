@@ -32,6 +32,10 @@ public class FlightAgent {
 
     @Tool(name = "get-flight", description = "Gets cheapest flight to a city on a date")
     public String getFlightInfo(String originCityCode, String destinationCityCode, String startDate) {
+        if ((originCityCode == null || originCityCode.isEmpty()) && (destinationCityCode == null || destinationCityCode.isEmpty()) && (startDate == null || startDate.isEmpty())) {
+            return "I cannot get flight information without your destination";
+        }
+        System.out.println("============calling flight api=========");
         String token = ApiAuthToken.getAccessToken(GRANT_TYPE, CLIENT_ID, CLIENT_SECRET);
 
         RestTemplate restTemplate = new RestTemplate();
